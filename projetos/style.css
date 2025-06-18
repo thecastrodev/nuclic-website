@@ -1,1 +1,155 @@
 @import url(../estilosGlobais/style.css);
+
+/* === BACK LINK === */
+.back-link {
+  margin-left: 1rem;
+}
+
+.back-link a {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+/* === PROJETOS === */
+.projetos-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.projetos-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.projetos-item {
+  margin-bottom: 4rem;
+}
+
+.projeto-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.projeto-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; 
+}
+
+.projeto-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.projeto-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projeto-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.projeto-text {
+  flex: 1;
+}
+
+.projeto-text h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.projeto-info {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0.5rem 0 1rem;
+}
+.projeto-desc {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons img {
+  object-fit: contain;
+  transition: filter 0.3s ease;
+  width: 2rem;
+  height: 2rem;
+}
+
+.social-icons a:hover img {
+  filter: brightness(1.5) invert(0.4);
+}
+
+/* === PROJETOS RESPONSIVO === */
+@media (min-width: 768px) {
+  .back-link {
+    width: 100%;
+    min-width: 700px;
+    max-width: 900px;
+    justify-self: center;
+  }
+
+  .back-link a {
+    font-size: 1rem;
+  }
+
+  .projeto-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .projeto-image {
+    flex: 0 0 360px;
+    height: 250px;
+  }
+
+  .projeto-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
