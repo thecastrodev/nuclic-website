@@ -54,6 +54,7 @@
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
+  text-align: justify;
 }
 
 /* === SOBRE - RESPONSIVO === */
@@ -230,6 +231,7 @@ button.next-btn {
   color: var(--text);
   line-height: 1.6;
   font-size: 1rem;
+  text-align: justify;
 }
 
 .block.invert .block-link {
