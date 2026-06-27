@@ -9,6 +9,7 @@ export interface CreateProductInput {
   price: number;
   stock_total?: number;
   stock_withdrawn?: number;
+  img?: string;
 }
 
 export class CreateProduct {
@@ -21,6 +22,7 @@ export class CreateProduct {
       price: input.price,
       stock_total: input.stock_total,
       stock_withdrawn: input.stock_withdrawn,
+      img: input.img,
     });
 
     if (productResult.isFailure) {

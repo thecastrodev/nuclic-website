@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getMonthName(date) {
         const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-        return \`\${months[date.getMonth()]} \${date.getFullYear()}\`;
+        return `${months[date.getMonth()]} ${date.getFullYear()}`;
     }
 
     function renderNews(newsArray) {
@@ -64,19 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
             grouped[monthYear].forEach(n => {
                 // Determine a placeholder image sequentially
                 const imgId = ((i - 1) % 5) + 1;
-                const imgSrc = \`assets/news_cover_\${imgId}.png\`;
+                const imgSrc = `assets/news_cover_${imgId}.png`;
                 i++;
 
                 const article = document.createElement('article');
                 article.className = 'news-card';
-                article.innerHTML = \`
-                    <img class="news-image" src="\${imgSrc}" alt="\${n.title}">
+                const strippedContent = n.content.replace(/<[^>]*>?/gm, '').trim();
+                article.innerHTML = `
+                    <img class="news-image" src="${imgSrc}" alt="${n.title}">
                     <div class="news-details">
-                        <h3 class="news-title">\${n.title}</h3>
-                        <p class="news-excerpt">\${n.content.substring(0, 150)}...</p>
-                        <button class="news-read-more-btn" data-news-id="\${n.id}">Ver Mais</button>
+                        <h3 class="news-title">${n.title}</h3>
+                        <p class="news-excerpt">${strippedContent.substring(0, 150)}...</p>
+                        <button class="news-read-more-btn" data-news-id="${n.id}">Ver Mais</button>
                     </div>
-                \`;
+                `;
                 divContent.appendChild(article);
             });
 
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drawerImage.alt = titleText;
         drawerDate.innerText = monthText;
         drawerTitle.innerText = titleText;
-        drawerContent.innerHTML = n ? \`<p>\${n.content}</p><p><small>Autor: \${n.author}</small></p>\` : '<p>Conteúdo não encontrado.</p>';
+        drawerContent.innerHTML = n ? `<p>${n.content}</p><p><small>Autor: ${n.author}</small></p>` : '<p>Conteúdo não encontrado.</p>';
 
         drawerOverlay.classList.add('active');
         document.body.style.overflow = 'hidden'; 
