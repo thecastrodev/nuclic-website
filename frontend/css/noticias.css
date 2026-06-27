@@ -1,0 +1,261 @@
+/* CSS Exclusivo para a página de Notícias (Timeline e Gaveta Lateral) */
+
+.page-noticias {
+    padding-top: calc(var(--menu-height) + 40px); /* Espaço para o header fixo */
+    padding-bottom: 64px;
+    background: var(--color-background-app);
+    min-height: 100vh;
+}
+
+.timeline-container {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px; /* Espaço entre os meses */
+}
+
+/* Bloco do Mês */
+.timeline-month-block {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+/* Topografia Massiva para o Mês (Lado Esquerdo) */
+.timeline-month-title {
+    position: sticky;
+    top: calc(var(--menu-height) + 40px); /* Gruda no topo ao rolar */
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-text-blue-dark);
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    opacity: 0.9;
+    letter-spacing: -1px;
+}
+
+/* Área das notícias do mês (Lado Direito) */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Cartão de Notícia */
+.news-card {
+    background: #ffffff;
+    border: 2px solid var(--color-border-glass);
+    border-radius: 4px; /* Bordas mais nítidas conforme regra de design */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    min-height: 240px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-nuclic-main);
+}
+
+.news-image {
+    width: 35%;
+    min-height: 100%;
+    object-fit: cover;
+    border-right: 2px solid var(--color-border-glass);
+}
+
+.news-details {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 65%;
+}
+
+.news-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-blue-dark);
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.news-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-blue);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.news-read-more-btn {
+    align-self: flex-start;
+    background: var(--color-nuclic-main);
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px; /* Sharp */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.news-read-more-btn:hover {
+    background: var(--color-text-blue-dark);
+}
+
+.news-read-more-btn:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   Drawer (Gaveta Lateral para Leitura Completa)
+   ========================================= */
+
+.news-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.news-drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.news-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Escondido por padrão na direita */
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 2001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-left: 4px solid var(--color-nuclic-main);
+}
+
+.news-drawer-overlay.active .news-drawer {
+    right: 0;
+}
+
+.drawer-header {
+    position: relative;
+    height: 250px;
+    flex-shrink: 0;
+}
+
+.drawer-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.drawer-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text-blue-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+    transform: scale(1.1);
+    background: #ffffff;
+}
+
+.drawer-body {
+    padding: 40px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.drawer-date {
+    font-size: 0.9rem;
+    color: var(--color-nuclic-main);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.drawer-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-text-blue-dark);
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+}
+
+.drawer-content {
+    font-size: 1.1rem;
+    color: var(--color-text-blue);
+    line-height: 1.6;
+}
+
+.drawer-content p {
+    margin-bottom: 16px;
+}
+
+/* =========================================
+   Responsividade (Mobile)
+   ========================================= */
+@media (width <= 900px) {
+    .timeline-month-block {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .timeline-month-title {
+        position: static;
+        font-size: 2.5rem;
+    }
+
+    .news-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .news-image {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 2px solid var(--color-border-glass);
+    }
+
+    .news-details {
+        width: 100%;
+    }
+}
