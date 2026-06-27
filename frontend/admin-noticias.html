@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuclic - Gestão de Notícias</title>
+    <link rel="stylesheet" crossorigin="" href="css/style.css">
+    <link rel="stylesheet" crossorigin="" href="css/admin.css">
+</head>
+<body>
+    <div id="root">
+        <!-- HEADER Simplificado -->
+        <header class="header-nav" style="position: static; padding: 20px 0;">
+            <nav class="menu-nav" style="justify-content: center; border: none; background: transparent; box-shadow: none;">
+                <a class="logoLink-nav" href="/" data-discover="true">
+                    <img class="logo-nav" alt="Nuclic" src="assets/logo-nuclic.svg" style="width: 120px;">
+                </a>
+            </nav>
+        </header>
+
+        <main class="page-admin-dashboard">
+            <aside class="admin-sidebar">
+                <ul>
+                    <li><a href="admin-noticias.html" class="active">Gestão de Notícias</a></li>
+                    <li><a href="admin-produtos.html">Gestão de Produtos</a></li>
+                    <li><a href="#" id="logoutBtn" class="logout-link">Sair</a></li>
+                </ul>
+            </aside>
+
+            <section class="admin-content">
+                <div class="admin-header">
+                    <h2>Notícias Publicadas</h2>
+                    <button class="btn-primary" id="btnNewNews">+ Nova Notícia</button>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="newsTableBody">
+                        <tr><td colspan="4" style="text-align: center;">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Form -->
+    <div class="modal-overlay" id="newsModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeNewsModal">&times;</button>
+            <h3 id="modalTitle">Nova Notícia</h3>
+            <form id="newsForm">
+                <input type="hidden" id="newsId">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="newsTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Conteúdo</label>
+                    <textarea id="newsContent" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;" rows="4"></textarea>
+                </div>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <div style="flex:1;">
+                        <label>Autor</label>
+                        <input type="text" id="newsAuthor" required>
+                    </div>
+                    <div style="flex:1;">
+                        <label>Data de Publicação</label>
+                        <input type="date" id="newsDate" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelNewsBtn">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-noticias.js"></script>
+</body>
+</html>

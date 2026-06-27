@@ -1,8 +1,12 @@
 import { createApp } from "./app.js";
 
-const app = createApp();
-const port = process.env.PORT || 3000;
+async function bootstrap() {
+  const app = await createApp();
+  const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+  app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
+}
+
+bootstrap();

@@ -70,7 +70,7 @@ export const swaggerDocument = {
               schema: {
                 type: "object",
                 properties: {
-                  username: { type: "string", example: "admin" },
+                  username: { type: "string", example: "admin@nuclic.ufc.br" },
                   password: { type: "string", example: "admin" },
                 },
                 required: ["username", "password"],

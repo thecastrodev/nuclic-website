@@ -1,18 +1,22 @@
-import { test, describe } from "node:test";
+import { test, describe, before } from "node:test";
 import assert from "node:assert";
 import request from "supertest";
 import { createApp } from "./app.js";
 
 describe("API Integration Tests", () => {
-  const app = createApp();
+  let app: any;
   let token: string;
   let productId: string;
   let newsId: string;
+  
+  before(async () => {
+    app = await createApp();
+  });
 
   test("POST /auth/login - should authenticate admin and return a JWT", async () => {
     const res = await request(app)
       .post("/auth/login")
-      .send({ username: "admin", password: "admin" })
+      .send({ username: "admin@nuclic.ufc.br", password: "admin" })
       .expect(200);
 
     assert.ok(res.body.token);
@@ -22,7 +26,7 @@ describe("API Integration Tests", () => {
   test("POST /auth/login - should fail with 401 on invalid credentials", async () => {
     await request(app)
       .post("/auth/login")
-      .send({ username: "admin", password: "wrong_password" })
+      .send({ username: "admin@nuclic.ufc.br", password: "wrong_password" })
       .expect(401);
   });
 

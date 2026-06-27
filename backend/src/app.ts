@@ -41,7 +41,7 @@ import { createAuthRouter } from "./infrastructure/http/routes/auth.routes.js";
 import { createProductRouter } from "./infrastructure/http/routes/product.routes.js";
 import { createNewsRouter } from "./infrastructure/http/routes/news.routes.js";
 
-export function createApp(options?: {
+export async function createApp(options?: {
   productRepository?: IProductRepository;
   stockHistoryRepository?: IStockHistoryRepository;
   newsRepository?: INewsRepository;
@@ -72,6 +72,13 @@ export function createApp(options?: {
   const getNewsUseCase = new GetNews(newsRepository);
   const updateNewsUseCase = new UpdateNews(newsRepository);
   const deleteNewsUseCase = new DeleteNews(newsRepository);
+
+  try {
+    const { seedData } = await import("./seed.js");
+    await seedData(createProductUseCase, createNewsUseCase);
+  } catch (err) {
+    console.error("Error seeding data:", err);
+  }
 
   // Initialize Controllers
   const authController = new AuthController();

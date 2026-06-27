@@ -68,12 +68,12 @@ Every route except authentication requires the `Authorization: Bearer <token>` h
 ### 1. Authentication
 
 #### Admin Login
-Authenticates and returns a JWT. Accepts hardcoded username/password `admin`.
+Authenticates and returns a JWT. Accepts hardcoded username/email `admin@nuclic.ufc.br` and password `admin`.
 *   **Request**:
     ```bash
     curl -X POST http://localhost:3000/auth/login \
       -H "Content-Type: application/json" \
-      -d '{"username": "admin", "password": "admin"}'
+      -d '{"username": "admin@nuclic.ufc.br", "password": "admin"}'
     ```
 *   **Expected Response (200)**:
     ```json
