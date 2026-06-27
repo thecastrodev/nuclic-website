@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuclic - Gestão de Produtos</title>
+    <link rel="stylesheet" crossorigin="" href="css/style.css">
+    <link rel="stylesheet" crossorigin="" href="css/admin.css">
+</head>
+<body>
+    <div id="root">
+        <!-- HEADER Simplificado -->
+        <header class="header-nav" style="position: static; padding: 20px 0;">
+            <nav class="menu-nav" style="justify-content: center; border: none; background: transparent; box-shadow: none;">
+                <a class="logoLink-nav" href="/" data-discover="true">
+                    <img class="logo-nav" alt="Nuclic" src="assets/logo-nuclic.svg" style="width: 120px;">
+                </a>
+            </nav>
+        </header>
+
+        <main class="page-admin-dashboard">
+            <aside class="admin-sidebar">
+                <ul>
+                    <li><a href="admin-noticias.html">Gestão de Notícias</a></li>
+                    <li><a href="admin-produtos.html" class="active">Gestão de Produtos</a></li>
+                    <li><a href="#" id="logoutBtn" class="logout-link">Sair</a></li>
+                </ul>
+            </aside>
+
+            <section class="admin-content">
+                <div class="admin-header">
+                    <h2>Produtos da Lojinha</h2>
+                    <button class="btn-primary" id="btnNewProduct">+ Novo Produto</button>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Itens carregados via JS -->
+                        <tr><td colspan="4" style="text-align: center;">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Form -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeProductModal">&times;</button>
+            <h3 id="modalTitle">Novo Produto</h3>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label>Nome do Produto</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input type="text" id="productDescription" required>
+                </div>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <div style="flex:1;">
+                        <label>Preço (R$)</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    <div style="flex:1;">
+                        <label>Estoque Inicial</label>
+                        <input type="number" id="productStock" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelProductBtn">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-produtos.js"></script>
+</body>
+</html>
