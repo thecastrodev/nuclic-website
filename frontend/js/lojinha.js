@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       products.forEach(p => {
-          // Placeholder image logic
-          let imgSrc = 'assets/produto_arduino.png';
-          if(p.name.toLowerCase().includes('sensor')) imgSrc = 'assets/produto_sensor.png';
-          if(p.name.toLowerCase().includes('rob')) imgSrc = 'assets/produto_robotica.png';
+          // Image logic
+          let imgSrc = p.img ? p.img : 'assets/produto_arduino.png';
+          if(!p.img && p.name.toLowerCase().includes('sensor')) imgSrc = 'assets/produto_sensor.png';
+          if(!p.img && p.name.toLowerCase().includes('rob')) imgSrc = 'assets/produto_robotica.png';
 
           const article = document.createElement('article');
           article.className = 'produto-card';
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateCartSubtotal() {
     const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    cartSubtotalSpan.textContent = \`R$\${subtotal.toFixed(2).replace(".", ",")}\`;
+    cartSubtotalSpan.textContent = `R$${subtotal.toFixed(2).replace(".", ",")}`;
   }
 
   function renderCartItems() {
@@ -149,24 +149,24 @@ document.addEventListener("DOMContentLoaded", () => {
     cart.forEach((item) => {
       const cartItemDiv = document.createElement("div");
       cartItemDiv.classList.add("cart-item");
-      cartItemDiv.innerHTML = \`
+      cartItemDiv.innerHTML = `
                 <div class="cart-item-image">
-                    <img src="\${item.image}" alt="\${item.name}" />
+                    <img src="${item.image}" alt="${item.name}" />
                 </div>
                 <div class="cart-item-details">
-                    <h4>\${item.name}</h4>
-                    <p>\${item.variation}</p>
-                    <p class="item-price">R$\${item.price.toFixed(2).replace(".", ",")}</p>
+                    <h4>${item.name}</h4>
+                    <p>${item.variation}</p>
+                    <p class="item-price">R$${item.price.toFixed(2).replace(".", ",")}</p>
                 </div>
                 <div class="cart-item-actions">
                     <div class="quantity-control-modal">
-                        <button class="decrease-modal" data-id="\${item.id}">-</button>
-                        <input type="number" value="\${item.quantity}" min="1" class="quantity-input-modal" data-id="\${item.id}" readonly />
-                        <button class="increase-modal" data-id="\${item.id}">+</button>
+                        <button class="decrease-modal" data-id="${item.id}">-</button>
+                        <input type="number" value="${item.quantity}" min="1" class="quantity-input-modal" data-id="${item.id}" readonly />
+                        <button class="increase-modal" data-id="${item.id}">+</button>
                     </div>
-                    <button class="remove-item-btn" data-id="\${item.id}">Remover</button>
+                    <button class="remove-item-btn" data-id="${item.id}">Remover</button>
                 </div>
-            \`;
+            `;
       cartItemsContainer.appendChild(cartItemDiv);
     });
 
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function addItemToCart(name, price, image, variation, quantity) {
-    const itemId = \`\${name}-\${variation}\`;
+    const itemId = `${name}-${variation}`;
     const existingItem = cart.find((item) => item.id === itemId);
 
     if (existingItem) {
@@ -249,14 +249,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let whatsappMessage = "Olá, gostaria de comprar os seguintes componentes:\\n\\n";
     cart.forEach((item) => {
-      whatsappMessage += \`▪ \${item.quantity}x \${item.name} (\${item.variation})\\n\`;
+      whatsappMessage += `▪ ${item.quantity}x ${item.name} (${item.variation})\\n`;
     });
 
     const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    whatsappMessage += \`\\n*Total:* R$\${subtotal.toFixed(2).replace(".", ",")}\`;
+    whatsappMessage += `\\n*Total:* R$${subtotal.toFixed(2).replace(".", ",")}`;
 
     const phoneNumber = "5588999999999"; 
-    const whatsappUrl = \`https://wa.me/\${phoneNumber}?text=\${encodeURIComponent(whatsappMessage)}\`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, "_blank"); 
   });
 

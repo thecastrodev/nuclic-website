@@ -9,6 +9,7 @@ export interface ProductProps {
   price: number;
   stock_total: number;
   stock_withdrawn: number;
+  img: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -28,6 +29,7 @@ export class Product {
       price: number;
       stock_total?: number;
       stock_withdrawn?: number;
+      img?: string;
       created_at?: Date;
       updated_at?: Date;
     }
@@ -63,6 +65,7 @@ export class Product {
         price: props.price,
         stock_total,
         stock_withdrawn,
+        img: props.img ?? "",
         created_at: props.created_at || new Date(),
         updated_at: props.updated_at || new Date(),
       })
@@ -170,6 +173,10 @@ export class Product {
     return this.props.updated_at;
   }
 
+  public get img(): string {
+    return this.props.img;
+  }
+
   public toJSON() {
     return {
       id: this.id,
@@ -179,6 +186,7 @@ export class Product {
       stock_total: this.stock_total,
       stock_withdrawn: this.stock_withdrawn,
       stock_available: this.stock_available,
+      img: this.img,
       created_at: this.created_at.toISOString(),
       updated_at: this.updated_at.toISOString(),
     };

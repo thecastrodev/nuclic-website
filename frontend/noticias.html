@@ -15,7 +15,7 @@
         <!-- HEADER (Mesmo estilo do index.html e lojinha.html) -->
         <header class="header-nav">
             <nav class="menu-nav">
-                <a class="logoLink-nav" href="/" data-discover="true">
+                <a class="logoLink-nav" href="index.html" data-discover="true">
                     <img class="logo-nav" alt="Nuclic" src="assets/logo-nuclic.svg">
                 </a>
                 <button class="menuButton-nav" type="button" aria-label="Abrir menu">
@@ -24,12 +24,13 @@
                     <span></span>
                 </button>
                 <div class="links-nav ">
-                    <div class="primaryLinks-nav">
+                    <div class="primaryLinks-nav" style="padding-right: 2rem">
                         <a href="index.html" data-discover="true">Início</a>
-                        <a href="noticias.html" data-discover="true" style="color:var(--color-text-blue-dark);font-weight:bold;">Notícias</a>
+                        <a href="noticias.html" data-discover="true"
+                            style="color:var(--color-text-blue-dark);font-weight:bold;">Notícias</a>
                         <a href="sobre-nos.html" data-discover="true">Sobre Nós</a>
                         <a href="lojinha.html" data-discover="true">Lojinha</a>
-                        <a class="expoButton-nav" href="/expoiot" data-discover="true">ExpoIoT</a>
+                        <a class="expoButton-nav" href="expoiot.html" data-discover="true">ExpoIoT</a>
                     </div>
                     <div class="mobileFooter-nav">
                         <div class="mobileContact-nav">
@@ -79,18 +80,18 @@
                     <section class="column-footer" aria-labelledby="footer-pages">
                         <h3 id="footer-pages">Acesso Rápido</h3>
                         <nav class="linkList-footer" aria-label="Paginas do site">
-                            <a class="linkItem-footer" href="/" data-discover="true">Inicio</a>
-                            <a class="linkItem-footer" href="/#noticias" data-discover="true">Noticias</a>
-                            <a class="linkItem-footer" href="/#materiais" data-discover="true">Materiais</a>
-                            <a class="linkItem-footer" href="/#projetos" data-discover="true">Projetos</a>
-                            <a class="linkItem-footer" href="/sobre-nos" data-discover="true">Sobre Nós</a>
-                            <a class="linkItem-footer" href="/expoiot" data-discover="true">ExpoIoT</a>
+                            <a class="linkItem-footer" href="index.html" data-discover="true">Inicio</a>
+                            <a class="linkItem-footer" href="noticias.html" data-discover="true">Noticias</a>
+                            <a class="linkItem-footer" href="index.html#materiais" data-discover="true">Materiais</a>
+                            <a class="linkItem-footer" href="index.html#projetos" data-discover="true">Projetos</a>
+                            <a class="linkItem-footer" href="sobre-nos.html" data-discover="true">Sobre Nós</a>
+                            <a class="linkItem-footer" href="expoiot.html" data-discover="true">ExpoIoT</a>
                         </nav>
                     </section>
                     <section class="column-footer" aria-labelledby="footer-sections">
                         <h3 id="footer-sections">Atalhos</h3>
                         <div class="linkList-footer">
-                            <a href="/sobre-nos" class="linkItem-footer">
+                            <a href="sobre-nos.html" class="linkItem-footer">
                                 <span>Quem somos</span>
                                 <small>Conheça nossa trajetória</small>
                             </a>
@@ -98,11 +99,11 @@
                                 <span>Projetos</span>
                                 <small>Página em breve</small>
                             </a>
-                            <a href="/#noticias" class="linkItem-footer">
+                            <a href="noticias.html" class="linkItem-footer">
                                 <span>Notícias</span>
                                 <small>Acompanhe atualizações</small>
                             </a>
-                            <a href="/#contato" class="linkItem-footer">
+                            <a href="index.html#contato" class="linkItem-footer">
                                 <span>Contato</span>
                                 <small>Fale com a equipe</small>
                             </a>
@@ -158,7 +159,8 @@
                                 target="_blank" rel="noreferrer" aria-label="Ir para o LinkedIn do Nuclic">
                                 <span class="socialIcon-footer">
                                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M6.15 8.4a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Z" fill="currentColor">
+                                        <path d="M6.15 8.4a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Z"
+                                            fill="currentColor">
                                         </path>
                                         <path
                                             d="M4.7 10.1h2.9v8.8H4.7zM10.05 10.1h2.78v1.26h.04c.39-.73 1.33-1.5 2.74-1.5 2.93 0 3.47 1.93 3.47 4.45v4.58h-2.9v-4.06c0-.97-.02-2.22-1.35-2.22-1.35 0-1.56 1.06-1.56 2.15v4.13h-2.9z"
