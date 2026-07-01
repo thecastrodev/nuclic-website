@@ -1,2 +1,5 @@
 # Ignore agents folder and artifacts
 .agents/
+node_modules/
+dist/
+
